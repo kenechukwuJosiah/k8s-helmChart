@@ -6,16 +6,14 @@ minikube config set driver docker
 minikube start // stop
 minikube status
 minikube dashboard --url
-minikube service <applicaiton-service-name>
+minikube service <application-service-name>
 ```
 
-# Kubectl Insallation/Configuration
+# Kubectl Installation/Configuration
 Installation: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-
 ```
 curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-
 
 cat ~/.kube/config  // kubectl config view
 alias k='kubectl'
@@ -25,7 +23,7 @@ alias k='kubectl'
 ```
 kubectl get namespace
 kubectl get deployment
-kubectl get replicasetP
+kubectl get replicaset
 kubectl get configmap
 kubectl get nodes
 kubectl describe nodes
@@ -58,7 +56,7 @@ kubectl config set-context --current --namespace=<NAMESPACE NAME>
 
 # Your Hello World Kubernetes Project
 ```
-kubectl get get pods
+kubectl get pods
 kubectl get pods -n dev 
 
 kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
@@ -91,8 +89,6 @@ kubectl apply -f solution/v3.yaml
 kubectl apply -f solution/v4.yaml
 ```
 
-
-
 # Troubleshooting, Logs, Rollouts, Draining Nodes 
 k describe deployment mydeployment
 ### Logs
@@ -101,3 +97,33 @@ k logs -f -l app=mywebapp
 kubectl rollout 
 k rollout restart deployment mydeployment
 kubectl drain minikube --ignore-daemonsets=true --force
+
+# Helm Chart Implementation
+Installation: https://helm.sh/docs/intro/install/
+```
+helm repo add stable https://charts.helm.sh/stable
+helm repo update
+```
+
+# Deploying Helm Chart
+```
+helm install test-app ./test-app
+```
+
+# Managing Helm Releases
+```
+helm list
+helm upgrade test-app ./test-app
+helm rollback test-app <REVISION>
+helm uninstall test-app
+```
+
+# Helm Commands
+```
+helm search repo <chart-name>
+helm show chart <chart-name>
+helm show values <chart-name>
+helm show readme <chart-name>
+helm history test-app
+```
+

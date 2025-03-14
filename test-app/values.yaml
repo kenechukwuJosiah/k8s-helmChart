@@ -1,0 +1,15 @@
+appName: helmappx
+
+namespace: default
+
+configmap:
+  name: 'myconfigmapv1.0'
+  data:
+    BG_COLOR: "#12181b"
+    FONT_COLOR: "red"
+    CUSTOM_HEADER: "I'm on top the world!!!!!!!"
+    CUSTOM_PHOTO: "https://img.freepik.com/free-photo/smart-industry-robot-arms-digital-factory-technology-showing-automation-manufacturing-process-industry-40-4th-industrial-revolution-iot-software-control-operation_587448-8170.jpg?t=st=1741985772~exp=1741989372~hmac=ef037730e2c29868de52462f514cb01bd60ede5de9b837cc43aad9029edc982f&w=2000"
+
+image:
+  name: 'devopsjourney1/mywebapp'
+  tag: 'latest'
